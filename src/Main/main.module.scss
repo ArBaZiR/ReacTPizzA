@@ -1,0 +1,21 @@
+//
+
+.card_block {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 45px;
+  row-gap: 65px;
+}
+
+.loader,
+.error {
+  margin: 150px 0 200px 0;
+  text-align: center;
+}
+
+.error {
+  & > span {
+    font-size: 60px;
+  }
+  font-size: 50px;
+}

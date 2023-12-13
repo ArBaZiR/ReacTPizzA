@@ -1,0 +1,36 @@
+/*  */
+html {
+  scrollbar-gutter: stable;
+  /* Уберает скачки скрол-бара */
+
+  ::-webkit-scrollbar {
+    background-color: rgb(255, 255, 255);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(132, 136, 133);
+    border-radius: 30px;
+  }
+}
+
+body {
+  background-color: #ffdf8c;
+  overflow-x: hidden;
+  font-family: "Varela Round", sans-serif;
+}
+
+* {
+  font-weight: 600;
+}
+
+#root {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+/* MEDIA */
+@media (max-width: 500px) {
+  #root {
+    padding: 10px;
+  }
+}

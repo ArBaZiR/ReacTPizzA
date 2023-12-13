@@ -1,0 +1,257 @@
+//
+
+.cart_block {
+  display: flex;
+  justify-content: center;
+  padding: 135px 0 80px 0;
+}
+// Если товара в корзине НЕТУ!
+
+.cart_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 45px;
+    padding-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  & > p:nth-child(3) {
+    padding: 5px 0 45px 0;
+  }
+
+  button {
+    padding: 15px 30px;
+    color: #414141;
+    border: 2px solid rgb(192, 192, 192);
+    border-radius: 30px;
+    transition: 0.2s;
+
+    &:hover {
+      color: #ffffff;
+      background-color: #000000;
+      border: 2px solid rgb(0, 0, 0);
+    }
+
+    &:active {
+      transition: 0.15s;
+      transform: translateY(4px);
+    }
+  }
+}
+
+// Если в корзине есть товар
+.cart_header {
+  display: flex;
+  align-items: center;
+  column-gap: 450px;
+
+  h1 {
+    &::before {
+      content: url(/public/cart_black.svg);
+      padding-right: 15px;
+    }
+  }
+
+  p {
+    color: #b6b6b6;
+  }
+}
+
+.clear_cart {
+  color: #b6b6b6;
+  transition: 0.15s;
+
+  &:hover {
+    color: #797979;
+  }
+
+  &:active {
+    transform: translateY(2px);
+    color: #000000;
+  }
+}
+
+.cart_products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
+  padding: 50px 0;
+}
+
+//
+
+.cart_card {
+  display: flex;
+  align-items: center;
+
+  img {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  .card__title {
+    padding-left: 15px;
+
+    h2 {
+      width: 210px;
+    }
+
+    p {
+      color: #8d8d8d;
+    }
+  }
+
+  .card_counter {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    padding: 0 90px;
+  }
+
+  .card_price {
+    font-size: 25px;
+    padding-right: 90px;
+    width: 200px;
+  }
+
+  .decrease,
+  .increase {
+    border: 2px solid #fe5f1e;
+    padding: 15px;
+    border-radius: 50%;
+    transition: 0.15s;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: "";
+        background-color: #fe5f1e;
+        width: 12px;
+        height: 3px;
+        border-radius: 20px;
+      }
+    }
+
+    &:hover {
+      background-color: #fe5f1e;
+      span {
+        &::before,
+        &::after {
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .increase {
+    span {
+      &::after {
+        position: absolute;
+        content: "";
+        background-color: #fe5f1e;
+        width: 12px;
+        height: 3px;
+        border-radius: 20px;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .card_delete {
+    border: 2px solid #d7d7d7;
+    padding: 20px;
+    border-radius: 50%;
+    transition: 0.15s;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before,
+      &::after {
+        position: absolute;
+        content: "";
+        background-color: #d7d7d7;
+        width: 17px;
+        height: 3px;
+        border-radius: 15px;
+        transform: rotate(-45deg);
+        transition: 0.2s;
+      }
+
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+
+    &:hover {
+      background-color: #fe5f1e;
+
+      span {
+        &::before,
+        &::after {
+          background-color: #d7d7d7;
+          transform: rotate(45deg);
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+//
+
+.cart_footer {
+  div:nth-child(1),
+  div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  div:nth-child(1) {
+    font-size: 22px;
+    padding-bottom: 30px;
+
+    span {
+      color: #fe5f1e;
+    }
+  }
+}
+
+.go_back,
+.pay {
+  position: relative;
+  padding: 18px 30px;
+  border-radius: 17px;
+  color: #616161;
+  border: 2px solid #b6b6b6;
+  transition: 0.2s;
+
+  &:hover {
+    color: rgb(255, 255, 255);
+    padding: 18px 30px;
+    border-radius: 30px;
+    background-color: #fe5f1e;
+  }
+
+  &:active {
+    transition: 0.1s;
+    background-color: #c24817;
+    transform: translateY(3px);
+  }
+}

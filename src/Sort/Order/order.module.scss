@@ -1,0 +1,89 @@
+//
+
+.order_block {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  width: 300px;
+  height: 35px;
+
+  & > button {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    padding: 5px 10px;
+    border-radius: 15px;
+    flex-wrap: wrap;
+
+    &:hover {
+      background-color: #fec21e;
+    }
+
+    &::before {
+      content: "";
+      background-image: url(/public/arrow_top.svg);
+      background-repeat: no-repeat;
+      transform: rotate(180deg);
+      width: 10px;
+      height: 6px;
+    }
+
+    & > p:nth-child(2) {
+      color: #fe5f1e;
+    }
+  }
+}
+
+// У меня :global не работал и я придумал сделать так
+
+.selector_block {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  border-radius: 0 0 10px 10px;
+  padding: 20px 15px;
+  align-items: flex-start;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(150, 150, 150);
+  z-index: 5;
+
+  button {
+    transition: 0.15s;
+    padding: 5px 15px;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: rgb(70, 70, 70);
+      color: rgb(255, 255, 255);
+      border-radius: 10px;
+    }
+
+    &:active {
+      transition: none;
+      background-color: rgba(87, 87, 87, 0.74);
+    }
+  }
+}
+
+.active {
+  background-color: rgb(70, 70, 70);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+// MEDIA
+
+@media (max-width: 460px) {
+  .order_block {
+    > button {
+      margin-top: 5px;
+      padding-bottom: 45px;
+    }
+  }
+}

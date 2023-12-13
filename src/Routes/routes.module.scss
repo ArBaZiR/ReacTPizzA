@@ -1,0 +1,40 @@
+/*  */
+
+.block {
+  background-color: #ffffff;
+  padding: 30px 60px;
+  border-radius: 10px;
+}
+
+.all_pizza__logo {
+  padding-bottom: 35px;
+}
+
+.sort_block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 0;
+}
+
+//
+
+.error {
+  padding: 200px 0;
+  text-align: center;
+
+  h1 {
+    font-size: 110px;
+  }
+
+  span {
+    background-image: url(/public/pizza_icon.svg);
+    width: 30px;
+    height: 30px;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+}
