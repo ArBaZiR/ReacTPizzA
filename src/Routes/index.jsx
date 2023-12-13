@@ -28,7 +28,7 @@ export default function Routes() {
     : "";
 
   useEffect(() => {
-    const item = useArray.find((el) =>
+    const item = useArray.map((el) =>
       el.id === global.id
         ? el.dough[el.activeType] === global.dough[global.activeType] &&
           el.sizes[el.activeSize] === global.sizes[global.activeSize]
