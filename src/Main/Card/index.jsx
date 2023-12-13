@@ -13,7 +13,7 @@ export default function Card({ id, title, img, types, sizes, price }) {
 
   function AddProducts() {
     const getItem = JSON.parse(localStorage.getItem("item"));
-    const item = getItem.find((el) => {
+    const item = getItem.map((el) => {
       if (el.id === id) {
         if (
           el.dough[el.activeType] === dough[activeType] &&
