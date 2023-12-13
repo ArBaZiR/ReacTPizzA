@@ -17,7 +17,7 @@ export default function Cart({
   }
 
   function Increase(i) {
-    const findItem = useArray.map((el, index) => index === i);
+    const findItem = useArray.find((el, index) => index === i);
     if (findItem) {
       findItem.quantity < 9 ? findItem.quantity++ : "";
       localStorage.setItem("item", JSON.stringify(useArray));
@@ -26,7 +26,7 @@ export default function Cart({
   }
   // По другому не придумал
   function decrease(i) {
-    const findItem = useArray.map((el, index) => index === i);
+    const findItem = useArray.find((el, index) => index === i);
     if (findItem) {
       findItem.quantity > 1 ? findItem.quantity-- : useArray.splice(i, 1);
       localStorage.setItem("item", JSON.stringify(useArray));
@@ -35,7 +35,7 @@ export default function Cart({
   }
 
   function Delete(i) {
-    const findItem = useArray.map((el, index) => index === i);
+    const findItem = useArray.find((el, index) => index === i);
     if (findItem) {
       useArray.splice(i, 1);
       localStorage.setItem("item", JSON.stringify(useArray));
