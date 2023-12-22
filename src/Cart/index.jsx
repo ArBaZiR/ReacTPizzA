@@ -70,7 +70,7 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
           <div className={style.cart_products}>
             {/*  */}
             {getItem.map((el, i) => (
-              <div key={el.id} className={style.cart_card}>
+              <div key={i} className={style.cart_card}>
                 <img src={el.img} alt="" />
                 <div className={style.card__title}>
                   <h2>{el.title}</h2>

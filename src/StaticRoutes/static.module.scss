@@ -3,4 +3,28 @@
   background-color: #ffffff;
   padding: 30px 60px;
   border-radius: 10px;
+  overflow: hidden;
+
+  main {
+    //
+    animation-name: blockAnimate;
+    animation-duration: 0.85s;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+// ANIMATION
+@keyframes blockAnimate {
+  0% {
+    transform: translateX(-15em);
+    opacity: 0;
+  }
+
+  50% {
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

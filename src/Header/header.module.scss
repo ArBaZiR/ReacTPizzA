@@ -9,6 +9,10 @@
     min-width: 30px;
     min-height: 30px;
   }
+  //
+  animation-name: blockAnimate;
+  animation-duration: 0.85s;
+  animation-timing-function: ease-in-out;
 }
 
 .logo_block {
@@ -64,5 +68,22 @@
 
   .cart_block {
     margin-top: 30px;
+  }
+}
+
+// ANIMATION
+
+@keyframes blockAnimate {
+  0% {
+    transform: translateY(-5em);
+    opacity: 0;
+  }
+
+  50% {
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
