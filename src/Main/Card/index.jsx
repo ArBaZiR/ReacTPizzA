@@ -1,7 +1,7 @@
 //
 import { useContext, useState } from "react";
 import style from "./Card.module.scss";
-import { SetData } from "../../Routes";
+import { SetData } from "../../StaticRoutes";
 
 export default function Card({ id, title, img, types, sizes, price }) {
   const [activeType, setActiveType] = useState();

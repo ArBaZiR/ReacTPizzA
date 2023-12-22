@@ -2,20 +2,20 @@
 import { Link } from "react-router-dom";
 import style from "./cart.module.scss";
 
-export default function Cart({
-  num,
-  getItem,
-  useArray,
-  allPizza,
-  setUseArray,
-}) {
+export default function Cart({ num, allPizza, useArray, setUseArray }) {
   //
-
+  const getItem = JSON.parse(localStorage.getItem("item"));
+  getItem
+    ? getItem.map(
+        (el) => (num += el.price * el.quantity) | (allPizza += el.quantity)
+      )
+    : "";
+  //
   function GetAndSet() {
-    const getItem = JSON.parse(localStorage.getItem("item"));
-    setUseArray(getItem);
+    setUseArray(JSON.parse(localStorage.getItem("item")));
   }
-
+  //
+  //
   function Increase(i) {
     const findItem = useArray.find((el, index) => index === i);
     if (findItem) {

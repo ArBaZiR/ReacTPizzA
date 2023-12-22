@@ -1,67 +1,34 @@
 //
 //
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { createContext, useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useRef, useState } from "react";
 import style from "./routes.module.scss";
-import Header from "../Header/index";
 import Main from "../Main/index";
 import Category from "../Sort/Category/index";
 import Order from "../Sort/Order/index";
 import Cart from "../Cart/index";
-
-export const SetData = createContext();
+import StaticRoutes from "../StaticRoutes/index";
+//
 
 export default function Routes() {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [sortTypes, setSortTypes] = useState(0);
   const [useArray, setUseArray] = useState([]);
-  const [global, setGlobal] = useState();
   //
-  const getItem = JSON.parse(localStorage.getItem("item"));
-  let num = 0;
-  let allPizza = 0;
-
-  getItem
-    ? getItem.map(
-        (el) => (num += el.price * el.quantity) | (allPizza += el.quantity)
-      )
-    : "";
-
-  useEffect(() => {
-    const item = useArray.find((el) =>
-      el.id === global.id
-        ? el.dough[el.activeType] === global.dough[global.activeType] &&
-          el.sizes[el.activeSize] === global.sizes[global.activeSize]
-        : ""
-    );
-
-    if (global) {
-      item ? item.quantity++ : useArray.push(global);
-      localStorage.setItem("item", JSON.stringify(useArray));
-    }
-    //
-    const getItem = JSON.parse(localStorage.getItem("item"));
-    getItem ? setUseArray(getItem) : "";
-  }, [global]);
-
-  function StaticRoutes() {
-    return (
-      <SetData.Provider value={{ setGlobal }}>
-        <div className={style.block}>
-          <header>
-            <Header num={num} allPizza={allPizza} />
-          </header>
-          <main>
-            <Outlet />
-          </main>
-        </div>
-      </SetData.Provider>
-    );
-  }
-
+  const numRef = useRef(0);
+  const allPizzaRef = useRef(0);
+  //
+  //
   const routes = createBrowserRouter([
     {
-      element: <StaticRoutes />,
+      element: (
+        <StaticRoutes
+          num={numRef.current}
+          allPizza={allPizzaRef.current}
+          useArray={useArray}
+          setUseArray={setUseArray}
+        />
+      ),
       children: [
         {
           path: "*",
@@ -92,10 +59,9 @@ export default function Routes() {
           path: "/cart",
           element: (
             <Cart
-              num={num}
-              getItem={getItem}
+              num={numRef.current}
+              allPizza={allPizzaRef.current}
               useArray={useArray}
-              allPizza={allPizza}
               setUseArray={setUseArray}
             />
           ),
