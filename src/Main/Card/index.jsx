@@ -1,5 +1,5 @@
 //
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import style from "./Card.module.scss";
 import { SetData } from "../../StaticRoutes";
 
@@ -9,7 +9,7 @@ export default function Card({ id, title, img, types, sizes, price }) {
   const [choice, setChoice] = useState("");
   const dough = ["тонкое", "традиционное"];
   const global = useContext(SetData);
-  const quantity = 1;
+  const quantity = useMemo(() => 1, []);
 
   function AddProducts() {
     const getItem = JSON.parse(localStorage.getItem("item"));
@@ -25,7 +25,7 @@ export default function Card({ id, title, img, types, sizes, price }) {
           }
         })
       : "";
-
+    //
     dough[activeType] && sizes[activeSize]
       ? item
         ? item.quantity < 9
@@ -65,9 +65,7 @@ export default function Card({ id, title, img, types, sizes, price }) {
 
   return (
     <div key={id} className={style.card}>
-      <div className={choice ? style.choice_error_active : style.choice_error}>
-        {choice}
-      </div>
+      <div className={choice ? style.choice_active : ""}>{choice}</div>
       <img src={img} />
       <h2>{title}</h2>
       <div className={style.sortByDough}>

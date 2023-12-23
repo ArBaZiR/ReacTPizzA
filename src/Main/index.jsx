@@ -5,6 +5,7 @@ import Loader from "./Loading/index";
 import Card from "./Card/index";
 
 export default function Main({ index, sortTypes }) {
+  //
   function Sorting(type) {
     return type === 0
       ? `title`
@@ -32,7 +33,6 @@ export default function Main({ index, sortTypes }) {
       </div>
     );
   }
-  // Переобарудывать на Skeleton
 
   if (error) {
     return (

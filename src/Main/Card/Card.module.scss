@@ -93,19 +93,21 @@
   }
 }
 
-.choice_error {
-  transform: translateY(-20px);
-}
-
-.choice_error_active {
+.choice_active {
+  opacity: 0;
   position: absolute;
   text-align: center;
-  top: 0;
+  transform: translateY(-3rem);
   padding: 15px 45px;
-  transition: 0.3s ease-out;
   background-color: #575757;
   border-radius: 15px;
   color: rgb(255, 255, 255);
+  //
+  animation-name: choiceAnimate, choiceAnimate_hiding;
+  animation-duration: 0.5s;
+  animation-delay: 0s, 2.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 // MEDIA
@@ -124,5 +126,20 @@
     h2 {
       margin-bottom: 10px;
     }
+  }
+}
+
+// ANIMATION
+@keyframes choiceAnimate {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes choiceAnimate_hiding {
+  100% {
+    opacity: 0;
+    transform: translateY(-3rem);
   }
 }
