@@ -59,9 +59,9 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
           <div className={style.cart_header}>
             <h1>Корзина</h1>
             <button
-              onClick={() =>
-                localStorage.setItem("item", JSON.stringify([])) | GetAndSet()
-              }
+              onClick={() => (
+                localStorage.setItem("item", JSON.stringify([])), GetAndSet()
+              )}
               className={style.clear_cart}
             >
               Очистить корзину
