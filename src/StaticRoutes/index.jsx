@@ -1,5 +1,5 @@
 //
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import style from "./static.module.scss";
 import Header from "../Header/index";

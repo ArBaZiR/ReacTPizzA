@@ -23,8 +23,8 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
       GetAndSet();
     }
   }
-  // По другому не придумал
-  function decrease(i) {
+  //
+  function Decrease(i) {
     const findItem = useArray.find((el, index) => index === i);
     if (findItem) {
       findItem.quantity > 1 ? findItem.quantity-- : useArray.splice(i, 1);
@@ -77,7 +77,7 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
                 </div>
                 <div className={style.card_counter}>
                   <button
-                    onClick={() => decrease(i)}
+                    onClick={() => Decrease(i)}
                     className={style.decrease}
                   >
                     <span />
