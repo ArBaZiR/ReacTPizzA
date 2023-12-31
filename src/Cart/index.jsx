@@ -57,7 +57,8 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
             <h1>Корзина</h1>
             <button
               onClick={() => (
-                localStorage.setItem("item", JSON.stringify([])), GetAndSet()
+                localStorage.setItem("item", JSON.stringify([])),
+                setUseArray(JSON.parse(localStorage.getItem("item")))
               )}
               className={style.clear_cart}
             >
