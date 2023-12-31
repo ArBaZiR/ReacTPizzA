@@ -12,15 +12,14 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
     : "";
   //
   function GetAndSet() {
+    localStorage.setItem("item", JSON.stringify(useArray));
     setUseArray(JSON.parse(localStorage.getItem("item")));
   }
-  //
   //
   function Increase(i) {
     const findItem = useArray.find((el, index) => index === i);
     if (findItem) {
       findItem.quantity < 9 ? findItem.quantity++ : "";
-      localStorage.setItem("item", JSON.stringify(useArray));
       GetAndSet();
     }
   }
@@ -29,7 +28,6 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
     const findItem = useArray.find((el, index) => index === i);
     if (findItem) {
       findItem.quantity > 1 ? findItem.quantity-- : useArray.splice(i, 1);
-      localStorage.setItem("item", JSON.stringify(useArray));
       GetAndSet();
     }
   }
@@ -38,7 +36,6 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
     const findItem = useArray.find((el, index) => index === i);
     if (findItem) {
       useArray.splice(i, 1);
-      localStorage.setItem("item", JSON.stringify(useArray));
       GetAndSet();
     }
   }
