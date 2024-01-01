@@ -15,6 +15,7 @@ export default function Main({ index, sortTypes }) {
       ? `price`
       : "";
   }
+
   const Query = useMemo(() => {
     return function Query() {
       const { isLoading, error, data } = useQuery({
