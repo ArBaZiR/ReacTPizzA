@@ -12,7 +12,7 @@ import StaticRoutes from "../StaticRoutes/index";
 
 export default function Routes() {
   const [categoryIndex, setCategoryIndex] = useState(0);
-  const [sortTypes, setSortTypes] = useState(0);
+  const [sortType, setSortType] = useState("title");
   const [useArray, setUseArray] = useState([]);
   //
   const numRef = useRef(0);
@@ -48,10 +48,10 @@ export default function Routes() {
                   categoryIndex={categoryIndex}
                   setCategoryIndex={setCategoryIndex}
                 />
-                <Order sortTypes={sortTypes} setSortTypes={setSortTypes} />
+                <Order setSortType={setSortType} />
               </div>
               <h1 className={style.all_pizza__logo}>Все пиццы</h1>
-              <Main index={categoryIndex} sortTypes={sortTypes} />
+              <Main index={categoryIndex} sortType={sortType} />
             </>
           ),
         },

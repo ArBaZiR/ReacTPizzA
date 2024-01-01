@@ -5,26 +5,14 @@ import Loader from "./Loading/index";
 import Card from "./Card/index";
 import { useMemo } from "react";
 
-export default function Main({ index, sortTypes }) {
-  function Sorting(type) {
-    return type === 0
-      ? `title`
-      : "" || type === 1
-      ? `rating`
-      : "" || type === 2
-      ? `price`
-      : "";
-  }
-
+export default function Main({ index, sortType }) {
   const Query = useMemo(() => {
     return function Query() {
       const { isLoading, error, data } = useQuery({
         queryKey: ["QueryData"],
         queryFn: () =>
           fetch(
-            `https://64f1c3f70e1e60602d243f88.mockapi.io/products?category=${index}&sortBy=${Sorting(
-              sortTypes
-            )}${sortTypes === 0 ? "&order=asc" : "&order=desc"}`
+            `https://64f1c3f70e1e60602d243f88.mockapi.io/products?category=${index}&sortBy=${sortType}&order=desc`
           ).then((data) => data.json()),
       });
 
@@ -61,7 +49,7 @@ export default function Main({ index, sortTypes }) {
         </div>
       );
     };
-  }, [index, sortTypes]);
+  }, [index, sortType]);
 
   return <Query />;
 }
