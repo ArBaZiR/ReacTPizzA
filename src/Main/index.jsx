@@ -23,7 +23,7 @@ export default function Main({ index, sortTypes }) {
           fetch(
             `https://64f1c3f70e1e60602d243f88.mockapi.io/products?category=${index}&sortBy=${Sorting(
               sortTypes
-            )}&order=desc`
+            )}${sortTypes === 0 ? "&order=asc" : "&order=desc"}`
           ).then((data) => data.json()),
       });
 
