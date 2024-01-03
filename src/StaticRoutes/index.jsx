@@ -20,8 +20,8 @@ export default function StaticRoutes({ num, allPizza, useArray, setUseArray }) {
     if (global) {
       const item = useArray.find((el) =>
         el.id === global.id
-          ? el.dough[el.activeType] === global.dough[global.activeType] &&
-            el.sizes[el.activeSize] === global.sizes[global.activeSize]
+          ? el.activeType === global.activeType &&
+            el.activeSize === global.activeSize
           : ""
       );
       //

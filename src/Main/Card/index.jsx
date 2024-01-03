@@ -16,8 +16,7 @@ export default function Card({ id, title, img, types, sizes, price }) {
     const item = getItem
       ? getItem.find((el) =>
           el.id === id
-            ? el.dough[el.activeType] === dough[activeType] &&
-              el.sizes[el.activeSize] === sizes[activeSize]
+            ? el.activeType === activeType && el.activeSize === activeSize
             : ""
         )
       : "";
@@ -36,15 +35,15 @@ export default function Card({ id, title, img, types, sizes, price }) {
       quantity,
     };
     //
-    dough[activeType] && sizes[activeSize]
+    activeType && activeSize
       ? item
         ? item.quantity < 9
           ? global.setGlobal(array)
           : setChoice("Слишком Много Пицц данной категории")
         : global.setGlobal(array)
-      : !dough[activeType]
+      : !activeType
       ? setChoice("Выбери Тесто")
-      : "" | !sizes[activeSize]
+      : "" | !activeSize
       ? setChoice("Выбери Размер")
       : "";
   }
