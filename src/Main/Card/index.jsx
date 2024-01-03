@@ -14,48 +14,34 @@ export default function Card({ id, title, img, types, sizes, price }) {
   function AddProducts() {
     const getItem = JSON.parse(localStorage.getItem("item"));
     const item = getItem
-      ? getItem.find((el) => {
-          if (el.id === id) {
-            if (
-              el.dough[el.activeType] === dough[activeType] &&
+      ? getItem.find((el) =>
+          el.id === id
+            ? el.dough[el.activeType] === dough[activeType] &&
               el.sizes[el.activeSize] === sizes[activeSize]
-            ) {
-              return el;
-            }
-          }
-        })
+            : ""
+        )
       : "";
+
+    const array = {
+      id,
+      title,
+      img,
+      types,
+      activeSize,
+      price,
+      sizes,
+      activeSize,
+      dough,
+      activeType,
+      quantity,
+    };
     //
     dough[activeType] && sizes[activeSize]
       ? item
         ? item.quantity < 9
-          ? global.setGlobal({
-              id,
-              title,
-              img,
-              types,
-              activeSize,
-              price,
-              sizes,
-              activeSize,
-              dough,
-              activeType,
-              quantity,
-            })
+          ? global.setGlobal(array)
           : setChoice("Слишком Много Пицц данной категории")
-        : global.setGlobal({
-            id,
-            title,
-            img,
-            types,
-            activeSize,
-            price,
-            sizes,
-            activeSize,
-            dough,
-            activeType,
-            quantity,
-          })
+        : global.setGlobal(array)
       : !dough[activeType]
       ? setChoice("Выбери Тесто")
       : "" | !sizes[activeSize]

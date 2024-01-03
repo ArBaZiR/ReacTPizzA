@@ -12,7 +12,7 @@ export default function Main({ index, sortType }) {
         queryKey: ["QueryData"],
         queryFn: () =>
           fetch(
-            `https://64f1c3f70e1e60602d243f88.mockapi.io/products?category=${index}&sortBy=${sortType}&order=desc`
+            `https://64f1c3f70e1e60602d243f88.mockapi.io/products?category=${index}&sortBy=${sortType}`
           ).then((data) => data.json()),
       });
 

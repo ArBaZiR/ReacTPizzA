@@ -7,9 +7,9 @@ export default function Order({ setSortType }) {
   const [openBlock, setOpenBlock] = useState(false);
 
   const selector = [
-    { title: "алфaвиту", sortBy: "title" },
-    { title: "популярности", sortBy: "rating" },
-    { title: "цене", sortBy: "price" },
+    { title: "Алфaвиту", sortBy: "title" },
+    { title: "Популярности", sortBy: "rating&order=desc" },
+    { title: "Цене", sortBy: "price&order=desc" },
   ];
 
   useEffect(() => {
