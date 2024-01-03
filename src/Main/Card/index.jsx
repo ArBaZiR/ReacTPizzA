@@ -35,15 +35,15 @@ export default function Card({ id, title, img, types, sizes, price }) {
       quantity,
     };
     //
-    activeType && activeSize
+    dough[activeType] && sizes[activeSize]
       ? item
         ? item.quantity < 9
           ? global.setGlobal(array)
           : setChoice("Слишком Много Пицц данной категории")
         : global.setGlobal(array)
-      : !activeType
+      : !dough[activeType]
       ? setChoice("Выбери Тесто")
-      : "" | !activeSize
+      : "" | !sizes[activeSize]
       ? setChoice("Выбери Размер")
       : "";
   }
