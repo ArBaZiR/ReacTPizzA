@@ -3,16 +3,7 @@ import { useContext, useState } from "react";
 import style from "./Card.module.scss";
 import { SetData } from "../../StaticRoutes";
 
-export default function Card({
-  id,
-  title,
-  img,
-  types,
-  dough,
-  sizes,
-  price,
-  quantity,
-}) {
+export default function Card({ id, title, img, types, dough, sizes, price }) {
   const [activeType, setActiveType] = useState("");
   const [activeSize, setActiveSize] = useState("");
   const [choice, setChoice] = useState("");
@@ -27,6 +18,8 @@ export default function Card({
             : ""
         )
       : "";
+
+    const quantity = 1;
 
     const array = {
       id,

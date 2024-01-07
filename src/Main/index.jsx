@@ -44,7 +44,6 @@ export default function Main({ index, sortType }) {
               dough={el.dough}
               sizes={el.sizes}
               price={el.price}
-              quantity={el.quantity}
             />
           ))}
         </div>
