@@ -19,8 +19,6 @@ export default function Card({ id, title, img, types, dough, sizes, price }) {
         )
       : "";
 
-    const quantity = 1;
-
     const array = {
       id,
       title,
@@ -31,7 +29,7 @@ export default function Card({ id, title, img, types, dough, sizes, price }) {
       sizes,
       dough,
       activeType,
-      quantity,
+      quantity: 1,
     };
     //
     dough[activeType] && sizes[activeSize]
