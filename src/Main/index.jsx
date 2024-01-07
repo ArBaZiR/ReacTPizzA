@@ -34,16 +34,17 @@ export default function Main({ index, sortType }) {
 
       return (
         <div className={style.card_block}>
-          {data.map((el) => (
+          {data.map((el, i) => (
             <Card
-              key={el.id}
-              id={el.id}
+              key={i}
+              id={i}
               title={el.title}
               img={el.img}
               types={el.types}
+              dough={el.dough}
               sizes={el.sizes}
               price={el.price}
-              quantityT={el.quantity}
+              quantity={el.quantity}
             />
           ))}
         </div>

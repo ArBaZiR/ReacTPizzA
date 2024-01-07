@@ -1,15 +1,22 @@
 //
-import { useContext, useMemo, useState } from "react";
+import { useContext, useState } from "react";
 import style from "./Card.module.scss";
 import { SetData } from "../../StaticRoutes";
 
-export default function Card({ id, title, img, types, sizes, price }) {
-  const [activeType, setActiveType] = useState();
-  const [activeSize, setActiveSize] = useState();
+export default function Card({
+  id,
+  title,
+  img,
+  types,
+  dough,
+  sizes,
+  price,
+  quantity,
+}) {
+  const [activeType, setActiveType] = useState("");
+  const [activeSize, setActiveSize] = useState("");
   const [choice, setChoice] = useState("");
-  const dough = ["тонкое", "традиционное"];
   const global = useContext(SetData);
-  const quantity = useMemo(() => 1, []);
 
   function AddProducts() {
     const getItem = JSON.parse(localStorage.getItem("item"));
@@ -29,7 +36,6 @@ export default function Card({ id, title, img, types, sizes, price }) {
       activeSize,
       price,
       sizes,
-      activeSize,
       dough,
       activeType,
       quantity,
