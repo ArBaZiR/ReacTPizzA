@@ -17,32 +17,23 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
   }
   //
   function Increase(i) {
-    const findItem = useArray.find((el, index) => index === i);
-    if (findItem) {
-      findItem.quantity < 9 ? findItem.quantity++ : "";
-      GetAndSet();
-    }
+    useArray[i].quantity < 9 ? useArray[i].quantity++ : "";
+    GetAndSet();
   }
   //
   function Decrease(i) {
-    const findItem = useArray.find((el, index) => index === i);
-    if (findItem) {
-      findItem.quantity > 1 ? findItem.quantity-- : useArray.splice(i, 1);
-      GetAndSet();
-    }
+    useArray[i].quantity > 1 ? useArray[i].quantity-- : useArray.splice(i, 1);
+    GetAndSet();
   }
 
   function Delete(i) {
-    const findItem = useArray.find((el, index) => index === i);
-    if (findItem) {
-      useArray.splice(i, 1);
-      GetAndSet();
-    }
+    useArray.splice(i, 1);
+    GetAndSet();
   }
 
   return (
     <div className={style.cart_block}>
-      {!getItem || getItem.length === 0 ? (
+      {!getItem || getItem.length < 1 ? (
         <div className={style.cart_empty}>
           <h1>Здесь пока ничего нету</h1>
           <p>Вероятнее всего, вы ещё не добавляли пиццу.</p>
