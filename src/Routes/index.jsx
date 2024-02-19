@@ -22,7 +22,7 @@ export default function Routes() {
   const [useArray, setUseArray] = useState([]);
   //
   useEffect(() => {
-    useArray.length && localStorage.setItem("item", JSON.stringify(useArray));
+    useArray?.length && localStorage.setItem("item", JSON.stringify(useArray));
     setAllCost(
       useArray.reduce(
         (accumulator, el) => accumulator + el.price * el.quantity,
