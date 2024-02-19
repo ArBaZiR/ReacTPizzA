@@ -22,15 +22,19 @@ export default function Routes() {
   const [useArray, setUseArray] = useState([]);
   //
   useEffect(() => {
-    useArray?.length && localStorage.setItem("item", JSON.stringify(useArray));
+    useArray && localStorage.setItem("item", JSON.stringify(useArray));
     setAllCost(
-      useArray.reduce(
-        (accumulator, el) => accumulator + el.price * el.quantity,
-        0
-      )
+      useArray
+        ? useArray.reduce(
+            (accumulator, el) => accumulator + el.price * el.quantity,
+            0
+          )
+        : 0
     );
     setAllNum(
-      useArray.reduce((accumulator, el) => accumulator + el.quantity, 0)
+      useArray
+        ? useArray.reduce((accumulator, el) => accumulator + el.quantity, 0)
+        : 0
     );
   }, [useArray]);
   const routes = createBrowserRouter([
