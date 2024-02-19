@@ -16,17 +16,17 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
   //
   function Increase(i) {
     useArray[i].quantity < 9 ? useArray[i].quantity++ : "";
-    setUseArray([...useArray]);
+    setUseArray((e) => [...e]);
   }
   //
   function Decrease(i) {
     useArray[i].quantity > 1 ? useArray[i].quantity-- : useArray.splice(i, 1);
-    setUseArray([...useArray]);
+    setUseArray((e) => [...e]);
   }
 
   function Delete(i) {
     useArray.splice(i, 1);
-    setUseArray([...useArray]);
+    setUseArray((e) => [...e]);
   }
 
   return (
