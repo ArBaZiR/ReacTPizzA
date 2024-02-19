@@ -12,23 +12,22 @@ export default function StaticRoutes({
   useArray,
   setUseArray,
 }) {
-  const [global, setGlobal] = useState();
+  const [global, setGlobal] = useState(null);
   //
   useEffect(() => {
     if (global) {
-      const item = useArray.find((el) =>
-        el.id === global.id
-          ? el.activeType === global.activeType &&
-            el.activeSize === global.activeSize
-          : ""
+      const item = useArray.find(
+        (el) =>
+          el.id === global.id &&
+          el.activeType === global.activeType &&
+          el.activeSize === global.activeSize
       );
       //
       item ? item.quantity++ : useArray.push(global);
       localStorage.setItem("item", JSON.stringify(useArray));
     }
-    //
     const getItem = JSON.parse(localStorage.getItem("item"));
-    getItem ? setUseArray(getItem) : "";
+    getItem && setUseArray(getItem);
   }, [global]);
 
   return (

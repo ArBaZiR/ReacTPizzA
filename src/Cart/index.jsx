@@ -35,10 +35,7 @@ export default function Cart({ allCost, allNum, useArray, setUseArray }) {
           <div className={style.cart_header}>
             <h1>Корзина</h1>
             <button
-              onClick={() => (
-                localStorage.removeItem("item"),
-                setUseArray(JSON.parse(localStorage.getItem("item")))
-              )}
+              onClick={() => (localStorage.removeItem("item"), setUseArray([]))}
               className={style.clear_cart}
             >
               Очистить корзину

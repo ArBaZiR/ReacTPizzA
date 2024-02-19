@@ -23,6 +23,7 @@ export default function Routes() {
   //
   useEffect(() => {
     useArray && localStorage.setItem("item", JSON.stringify(useArray));
+
     setAllCost(
       useArray
         ? useArray.reduce(
