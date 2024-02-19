@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import style from "./header.module.scss";
 
-export default function Header({ num, allPizza }) {
+export default function Header({ allCost, allNum }) {
   return (
     <div className={style.header_block}>
       <Link to={"/"}>
@@ -18,13 +18,13 @@ export default function Header({ num, allPizza }) {
         <Link to={"/cart"}>
           <div className={style.cart_block}>
             <div>
-              <div>{num}</div>
+              <div>{allCost}</div>
               <p>р</p>
             </div>
             <span></span>
             <div>
               <img src="/cart.svg" alt="" />
-              <p>{allPizza}</p>
+              <p>{allNum}</p>
             </div>
           </div>
         </Link>

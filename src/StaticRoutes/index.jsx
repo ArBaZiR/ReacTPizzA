@@ -6,16 +6,14 @@ import Header from "../Header/index";
 //
 export const SetData = createContext();
 
-export default function StaticRoutes({ num, allPizza, useArray, setUseArray }) {
+export default function StaticRoutes({
+  allCost,
+  allNum,
+  useArray,
+  setUseArray,
+}) {
   const [global, setGlobal] = useState();
   //
-  const getItem = JSON.parse(localStorage.getItem("item"));
-  getItem
-    ? getItem.map(
-        (el) => (num += el.price * el.quantity) | (allPizza += el.quantity)
-      )
-    : "";
-
   useEffect(() => {
     if (global) {
       const item = useArray.find((el) =>
@@ -37,7 +35,7 @@ export default function StaticRoutes({ num, allPizza, useArray, setUseArray }) {
     <SetData.Provider value={{ setGlobal }}>
       <div className={style.block}>
         <header>
-          <Header num={num} allPizza={allPizza} />
+          <Header allCost={allCost} allNum={allNum} />
         </header>
         <main>
           <Outlet />

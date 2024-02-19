@@ -1,18 +1,8 @@
 //
 import { Link } from "react-router-dom";
 import style from "./cart.module.scss";
-import { useEffect } from "react";
 
-export default function Cart({ num, allPizza, useArray, setUseArray }) {
-  //
-  useEffect(() => {
-    const getItem = JSON.parse(localStorage.getItem("item"));
-    getItem
-      ? getItem.map(
-          (el) => (num += el.price * el.quantity) | (allPizza += el.quantity)
-        )
-      : "";
-  }, [useArray]);
+export default function Cart({ allCost, allNum, useArray, setUseArray }) {
   //
   function Increase(i) {
     useArray[i].quantity < 9 ? useArray[i].quantity++ : "";
@@ -93,10 +83,10 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
           <div className={style.cart_footer}>
             <div>
               <p>
-                Всего пицц: <span>{allPizza} шт.</span>
+                Всего пицц: <span>{allNum} шт.</span>
               </p>
               <p>
-                Сумма заказа: <span>{num} Р</span>
+                Сумма заказа: <span>{allCost} Р</span>
               </p>
             </div>
             <div>

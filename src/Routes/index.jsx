@@ -1,7 +1,11 @@
 //
 //
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useRef, useState } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+import { useEffect, useState } from "react";
 import style from "./routes.module.scss";
 import Main from "../Main/index";
 import Category from "../Sort/Category/index";
@@ -11,20 +15,30 @@ import StaticRoutes from "../StaticRoutes/index";
 //
 
 export default function Routes() {
+  const [allCost, setAllCost] = useState(0);
+  const [allNum, setAllNum] = useState(0);
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [sortType, setSortType] = useState("title");
   const [useArray, setUseArray] = useState([]);
   //
-  const numRef = useRef(0);
-  const allPizzaRef = useRef(0);
-  //
-  //
+  useEffect(() => {
+    useArray.length && localStorage.setItem("item", JSON.stringify(useArray));
+    setAllCost(
+      useArray.reduce(
+        (accumulator, el) => accumulator + el.price * el.quantity,
+        0
+      )
+    );
+    setAllNum(
+      useArray.reduce((accumulator, el) => accumulator + el.quantity, 0)
+    );
+  }, [useArray]);
   const routes = createBrowserRouter([
     {
       element: (
         <StaticRoutes
-          num={numRef.current}
-          allPizza={allPizzaRef.current}
+          allCost={allCost}
+          allNum={allNum}
           useArray={useArray}
           setUseArray={setUseArray}
         />
@@ -32,12 +46,7 @@ export default function Routes() {
       children: [
         {
           path: "*",
-          element: (
-            <div className={style.error}>
-              <h1>Ошибка 404</h1>
-              <h2>Страница не найдена</h2>
-            </div>
-          ),
+          element: <Navigate to={"/"} />,
         },
         {
           path: "/",
@@ -59,8 +68,8 @@ export default function Routes() {
           path: "/cart",
           element: (
             <Cart
-              num={numRef.current}
-              allPizza={allPizzaRef.current}
+              allCost={allCost}
+              allNum={allNum}
               useArray={useArray}
               setUseArray={setUseArray}
             />
