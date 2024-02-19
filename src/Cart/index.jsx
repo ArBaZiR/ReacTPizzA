@@ -1,39 +1,37 @@
 //
 import { Link } from "react-router-dom";
 import style from "./cart.module.scss";
+import { useEffect } from "react";
 
 export default function Cart({ num, allPizza, useArray, setUseArray }) {
   //
-  const getItem = JSON.parse(localStorage.getItem("item"));
-  getItem
-    ? getItem.map(
-        (el) => (num += el.price * el.quantity) | (allPizza += el.quantity)
-      )
-    : "";
-  //
-  function GetAndSet() {
-    localStorage.setItem("item", JSON.stringify(useArray));
-    setUseArray(JSON.parse(localStorage.getItem("item")));
-  }
+  useEffect(() => {
+    const getItem = JSON.parse(localStorage.getItem("item"));
+    getItem
+      ? getItem.map(
+          (el) => (num += el.price * el.quantity) | (allPizza += el.quantity)
+        )
+      : "";
+  }, [useArray]);
   //
   function Increase(i) {
     useArray[i].quantity < 9 ? useArray[i].quantity++ : "";
-    GetAndSet();
+    setUseArray([...useArray]);
   }
   //
   function Decrease(i) {
     useArray[i].quantity > 1 ? useArray[i].quantity-- : useArray.splice(i, 1);
-    GetAndSet();
+    setUseArray([...useArray]);
   }
 
   function Delete(i) {
     useArray.splice(i, 1);
-    GetAndSet();
+    setUseArray([...useArray]);
   }
 
   return (
     <div className={style.cart_block}>
-      {!getItem || getItem.length < 1 ? (
+      {!useArray || useArray.length < 1 ? (
         <div className={style.cart_empty}>
           <h1>Здесь пока ничего нету</h1>
           <p>Вероятнее всего, вы ещё не добавляли пиццу.</p>
@@ -48,7 +46,7 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
             <h1>Корзина</h1>
             <button
               onClick={() => (
-                localStorage.setItem("item", JSON.stringify([])),
+                localStorage.removeItem("item"),
                 setUseArray(JSON.parse(localStorage.getItem("item")))
               )}
               className={style.clear_cart}
@@ -58,7 +56,7 @@ export default function Cart({ num, allPizza, useArray, setUseArray }) {
           </div>
           <div className={style.cart_products}>
             {/*  */}
-            {getItem.map((el, i) => (
+            {useArray.map((el, i) => (
               <div key={i} className={style.cart_card}>
                 <img src={el.img} alt="" />
                 <div className={style.card__title}>
