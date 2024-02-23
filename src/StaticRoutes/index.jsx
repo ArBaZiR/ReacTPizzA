@@ -14,6 +14,7 @@ export default function StaticRoutes({
 }) {
   const [global, setGlobal] = useState(null);
   //
+
   useEffect(() => {
     if (global) {
       const item = useArray.find(
@@ -23,11 +24,10 @@ export default function StaticRoutes({
           el.activeSize === global.activeSize
       );
       //
-      item ? item.quantity++ : useArray.push(global);
-      localStorage.setItem("item", JSON.stringify(useArray));
+      item
+        ? (item.quantity++, setUseArray((e) => [...e]))
+        : setUseArray((e) => [...e, global]);
     }
-    const getItem = JSON.parse(localStorage.getItem("item"));
-    getItem && setUseArray(getItem);
   }, [global]);
 
   return (

@@ -19,25 +19,25 @@ export default function Routes() {
   const [allNum, setAllNum] = useState(0);
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [sortType, setSortType] = useState("title");
-  const [useArray, setUseArray] = useState([]);
+  const [useArray, setUseArray] = useState(
+    JSON.parse(localStorage.getItem("item"))
+      ? JSON.parse(localStorage.getItem("item"))
+      : []
+  );
   //
   useEffect(() => {
-    useArray && localStorage.setItem("item", JSON.stringify(useArray));
-
+    localStorage.setItem("item", JSON.stringify(useArray));
     setAllCost(
-      useArray
-        ? useArray.reduce(
-            (accumulator, el) => accumulator + el.price * el.quantity,
-            0
-          )
-        : 0
+      useArray.reduce(
+        (accumulator, el) => accumulator + el.price * el.quantity,
+        0
+      )
     );
     setAllNum(
-      useArray
-        ? useArray.reduce((accumulator, el) => accumulator + el.quantity, 0)
-        : 0
+      useArray.reduce((accumulator, el) => accumulator + el.quantity, 0)
     );
   }, [useArray]);
+  //
   const routes = createBrowserRouter([
     {
       element: (

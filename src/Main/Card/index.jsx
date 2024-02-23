@@ -10,14 +10,12 @@ export default function Card({ id, title, img, types, dough, sizes, price }) {
   const global = useContext(SetData);
 
   function AddProducts() {
-    const getItem = JSON.parse(localStorage.getItem("item"));
-    const item = getItem
-      ? getItem.find((el) =>
-          el.id === id
-            ? el.activeType === activeType && el.activeSize === activeSize
-            : ""
-        )
-      : "";
+    const item = JSON.parse(localStorage.getItem("item"))?.find(
+      (el) =>
+        el.id === id &&
+        el.activeType === activeType &&
+        el.activeSize === activeSize
+    );
 
     const array = {
       id,
@@ -38,11 +36,9 @@ export default function Card({ id, title, img, types, dough, sizes, price }) {
           ? global.setGlobal(array)
           : setChoice("Слишком Много Пицц данной категории")
         : global.setGlobal(array)
-      : !dough[activeType]
-      ? setChoice("Выбери Тесто")
-      : "" | !sizes[activeSize]
-      ? setChoice("Выбери Размер")
-      : "";
+      : !dough[activeType] &&
+        setChoice("Выбери Тесто") | !sizes[activeSize] &&
+        setChoice("Выбери Размер");
   }
 
   return (
@@ -51,13 +47,13 @@ export default function Card({ id, title, img, types, dough, sizes, price }) {
       <img src={img} />
       <h2>{title}</h2>
       <div className={style.sortByDough}>
-        {types.map((typeI) => (
+        {types.map((i) => (
           <button
-            onClick={() => setActiveType(typeI)}
-            key={typeI}
-            className={activeType === typeI ? style.active : ""}
+            onClick={() => setActiveType(i)}
+            key={i}
+            className={activeType === i ? style.active : ""}
           >
-            {dough[typeI]}
+            {dough[i]}
           </button>
         ))}
       </div>
