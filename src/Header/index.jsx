@@ -1,8 +1,9 @@
 //
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import style from "./header.module.scss";
 
-export default function Header({ allCost, allNum }) {
+export default memo(function Header({ allCost, allNum }) {
   return (
     <div className={style.header_block}>
       <Link to={"/"}>
@@ -31,4 +32,4 @@ export default function Header({ allCost, allNum }) {
       </div>
     </div>
   );
-}
+});
